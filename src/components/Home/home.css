@@ -1,0 +1,51 @@
+.home-container {
+    margin: 0px auto 4px 0;
+    height: 480px;
+    display: flex;
+    top: 0%;
+    left: 50%;
+    width: 100%;
+    text-align: center;
+}
+
+.short-info {
+    justify-items: legacy;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    flex: 1;
+    margin-top: 11.6em;
+    width: 100%;
+}
+
+.short-info>h1 {
+    text-transform: capitalize;
+    font-size: 3.7rem;
+    font-weight: 600;
+    line-height: 1.1;
+    color: #ffffff !important;
+    font-family: Ubuntu, sans-serif !important;
+    pointer-events: auto;
+    word-wrap: break-word;
+    position: relative;
+    font-weight: bold;
+    word-wrap: break-word;
+    padding-left: 1em;
+}
+
+.short-info>h2 {
+    text-transform: capitalize;
+    font-size: 1.8rem;
+    font-weight: 600;
+    line-height: 1.1;
+    color: #fffefe !important;
+    font-family: Ubuntu, sans-serif !important;
+    pointer-events: auto;
+    word-wrap: break-word;
+    position: relative;
+    font-weight: bold;
+    word-wrap: break-word;
+    padding-left: 1em;
+}
+
+
