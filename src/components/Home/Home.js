@@ -1,5 +1,6 @@
 import './home.css';
-const Home = () => {
+import LatestAdventure from './LatestAdventure/LatestAdventure';
+const Home = ({ adventures }) => {
   return (
     <>
       <section id="home">
@@ -8,6 +9,19 @@ const Home = () => {
             <h1>The best of mountain adventure!</h1>
           </div>
         </div>
+      </section>
+
+      <section id="home-page">
+
+        <div className="offers">
+          <h1>Latest Adventure</h1>
+
+          {adventures.length > 0
+            ? adventures.map(x => <LatestAdventure key={x._id} adventure={x} />)
+            : <p className="no-offer">There are no posts yet...</p>
+          }
+        </div>
+
       </section>
     </>
   );
