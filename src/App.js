@@ -7,7 +7,7 @@ import Login from './components/Login/Login';
 import Register from './components/Register/Register';
 import Catalog from './components/Catalog/Catalog';
 
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 import './App.css';
 import AdventureDetails from './components/AdventureDetails/AdventureDetails';
 import Create from './components/Create/Create';
@@ -15,11 +15,12 @@ import Profile from './components/Profile/Profile';
 
 import Edit from './components/Edit/Edit';
 import Logout from "./components/Logout/Logout";
+import { useLocalStorage } from "./hooks/useLocalStorage";
 
 function App() {
   const [adventures, setAdventure] = useState([]);
-  const [auth, setAuth] = useState({});
-
+  const [auth, setAuth] = useLocalStorage('auth', {});
+const navigate = useNavigate();
   const userLoginHandler = (authData) => {
     setAuth(authData);
   };
@@ -33,6 +34,14 @@ function App() {
         setAdventure(result);
       });
   }, []);
+
+  const addAdventureHandler = (adventureData) => {
+    setAdventure(state => [
+      ...state,
+      adventureData,
+    ]);
+    navigate('/catalog');
+  }
   return (
     <AuthContext.Provider value={{user: auth, userLoginHandler, userLogoutHandler}}>
       <Header />
@@ -45,7 +54,7 @@ function App() {
           <Route path="/catalog" element={<Catalog adventures={adventures} />} />
           <Route path="/catalog/:adventureId" element={<AdventureDetails AdventureDetails={AdventureDetails} />} />
           <Route path="/" element={<Edit />} />
-          <Route path="/create" element={<Create />} />
+          <Route path="/create" element={<Create addAdventureHandler={addAdventureHandler} />} />
           <Route path="/profile" element={<Profile />} />
 
         </Routes>

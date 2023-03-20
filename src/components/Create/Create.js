@@ -1,14 +1,23 @@
+import * as adventureService from '../../services/adventureService';
 import './create-edit.css';
-const Create = () => {
+const Create = ({addAdventureHandler}) => {
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+
+    const adventureData = Object.fromEntries(new FormData(e.target));
+
+    adventureService.create(adventureData)
+    .then(result => {
+      addAdventureHandler(result)
+    });
+  };
     return (
 
   <section id="create-page">
     <div className="createSection">
-      <div className="info">
-        <h2>Create your post, share information about adventure.</h2>
-      </div>
-      <form action="#" method="" className="createForm">
-        <h2>Create Post</h2>
+      <form id="createForm" onSubmit={onSubmit}>
+        <h2>Create Adventure</h2>
         <ul className="noBullet">
           <li>
             <label htmlFor="title">Title:</label>
@@ -17,8 +26,8 @@ const Create = () => {
               className="inputFields"
               id="title"
               placeholder="Two golden snub-nosed monkeys"
-              name=""
-              defaultValue=""
+              name="title"
+              
             />
           </li>
           <li>
@@ -28,8 +37,8 @@ const Create = () => {
               className="inputFields"
               id="location"
               placeholder="North America"
-              name=""
-              defaultValue=""
+              name="location"
+              
             />
           </li>
           <li>
@@ -39,8 +48,8 @@ const Create = () => {
               className="inputFields"
               id="date"
               placeholder="18.02.2021"
-              name=""
-              defaultValue=""
+              name="date"
+              
             />
           </li>
           <li>
@@ -50,8 +59,8 @@ const Create = () => {
               className="inputFields"
               id="image"
               placeholder="http:/..."
-              name=""
-              defaultValue=""
+              name="imageUrl"
+              
             />
           </li>
           <li>
@@ -59,13 +68,13 @@ const Create = () => {
             <textarea
               id="description"
               className="inputFields"
-              name=""
-              placeholder="Monkey is..."
+              name="description"
+              placeholder="Mointain is..."
               defaultValue={""}
             />
           </li>
           <li id="center-btn">
-            <button id="create-btn">Create</button>
+          <input type="submit" id="create-btn" value="Create" />
           </li>
         </ul>
       </form>
