@@ -23,7 +23,7 @@ const AdventureDetails =({
           {/* If there is no registered user, do not display buttons*/}
           <div className="social-btn">
             {/* Only for registered user and author of the post */}
-            <Link to="#" className="edit-btn">
+            <Link to={`/adventures/${adventure._id}/edit`} className="edit-btn">
               Edit
             </Link>
             <Link to="#" className="del-btn">
