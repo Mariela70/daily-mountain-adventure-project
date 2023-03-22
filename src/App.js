@@ -35,6 +35,10 @@ const navigate = useNavigate();
       });
   }, []);
 
+  const adventureEdit = (adventureId, adventureData) => {
+    setAdventure(state => state.map(x => x._id === adventureId ? adventureData : x));
+  }
+
   const addAdventureHandler = (adventureData) => {
     setAdventure(state => [
       ...state,
@@ -52,8 +56,8 @@ const navigate = useNavigate();
           <Route path="/register" element={<Register />} />
           <Route path="/logout" element={<Logout />} />
           <Route path="/catalog" element={<Catalog adventures={adventures} />} />
-          <Route path="/catalog/:adventureId" element={<AdventureDetails AdventureDetails={AdventureDetails} />} />
-          <Route path="/" element={<Edit />} />
+          <Route path="/catalog/:adventureId" element={<AdventureDetails adventures={adventures} />} />
+          <Route path="/adventures/:adventureId/edit" element={<Edit adventureEdit={adventureEdit} />} />
           <Route path="/create" element={<Create addAdventureHandler={addAdventureHandler} />} />
           <Route path="/profile" element={<Profile />} />
 
