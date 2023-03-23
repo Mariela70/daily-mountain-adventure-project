@@ -6,6 +6,7 @@ import Home from './components/Home/Home';
 import Login from './components/Login/Login';
 import Register from './components/Register/Register';
 import Catalog from './components/Catalog/Catalog';
+import PrivateRoute from "./components/common/PrivateRoute";
 
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import './App.css';
@@ -18,10 +19,10 @@ import Logout from "./components/Logout/Logout";
 
 function App() {
   const [adventures, setAdventure] = useState([]);
- 
+
 
   const navigate = useNavigate();
-  
+
 
   useEffect(() => {
     adventureService.getAll()
@@ -44,7 +45,7 @@ function App() {
       adventureData,
     ]);
     navigate('/catalog');
-    
+
   }
   return (
     <AuthProvider >
@@ -54,12 +55,12 @@ function App() {
           <Route path="/" element={<Home adventures={adventures} />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/logout" element={<Logout />} />
+          <Route path="/logout" element={<PrivateRoute><Logout /></PrivateRoute>} />
           <Route path="/catalog" element={<Catalog adventures={adventures} />} />
           <Route path="/catalog/:adventureId" element={<AdventureDetails adventures={adventures} adventureDelete={adventureDelete} />} />
-          <Route path="/adventures/:adventureId/edit" element={<Edit adventureEdit={adventureEdit} />} />
-          <Route path="/create" element={<Create addAdventureHandler={addAdventureHandler} />} />
-          <Route path="/profile" element={<Profile />} />
+          <Route path="/adventures/:adventureId/edit" element={<PrivateRoute><Edit adventureEdit={adventureEdit} /></PrivateRoute>} />
+          <Route path="/create" element={<PrivateRoute><Create addAdventureHandler={addAdventureHandler} /></PrivateRoute>} />
+          <Route path="/profile" element={<PrivateRoute><Profile /></PrivateRoute>} />
 
         </Routes>
       </main>

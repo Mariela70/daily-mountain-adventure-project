@@ -15,7 +15,7 @@ export const AuthProvider = ({
         setAuth({});
       };
     return (
-        <AuthContext.Provider value={{user: auth, userLoginHandler, userLogoutHandler}}>
+        <AuthContext.Provider value={{user: auth, userLoginHandler, userLogoutHandler, isAuthenticated: !!auth.accessToken}}>
             {children}
         </AuthContext.Provider>
     );
