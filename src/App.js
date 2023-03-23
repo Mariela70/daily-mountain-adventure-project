@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import * as adventureService from '../src/services/adventureService';
-import { AuthContext } from "./contexts/AuthContext";
+import { AuthProvider } from "./contexts/AuthContext";
 import Header from './components/Header/Header';
 import Home from './components/Home/Home';
 import Login from './components/Login/Login';
@@ -15,18 +15,13 @@ import Profile from './components/Profile/Profile';
 
 import Edit from './components/Edit/Edit';
 import Logout from "./components/Logout/Logout";
-import { useLocalStorage } from "./hooks/useLocalStorage";
 
 function App() {
   const [adventures, setAdventure] = useState([]);
-  const [auth, setAuth] = useLocalStorage('auth', {});
-const navigate = useNavigate();
-  const userLoginHandler = (authData) => {
-    setAuth(authData);
-  };
-  const userLogoutHandler = () => {
-    setAuth({});
-  };
+ 
+
+  const navigate = useNavigate();
+  
 
   useEffect(() => {
     adventureService.getAll()
@@ -47,7 +42,7 @@ const navigate = useNavigate();
     navigate('/catalog');
   }
   return (
-    <AuthContext.Provider value={{user: auth, userLoginHandler, userLogoutHandler}}>
+    <AuthProvider >
       <Header />
       <main id="main-content">
         <Routes>
@@ -63,7 +58,7 @@ const navigate = useNavigate();
 
         </Routes>
       </main>
-    </AuthContext.Provider>
+    </AuthProvider>
   );
 }
 
