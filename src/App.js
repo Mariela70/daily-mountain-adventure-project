@@ -34,12 +34,17 @@ function App() {
     setAdventure(state => state.map(x => x._id === adventureId ? adventureData : x));
   }
 
+  const adventureDelete = (adventureId) => {
+    setAdventure(state => state.filter(x => x._id !== adventureId));
+  }
+
   const addAdventureHandler = (adventureData) => {
     setAdventure(state => [
       ...state,
       adventureData,
     ]);
     navigate('/catalog');
+    
   }
   return (
     <AuthProvider >
@@ -51,7 +56,7 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/logout" element={<Logout />} />
           <Route path="/catalog" element={<Catalog adventures={adventures} />} />
-          <Route path="/catalog/:adventureId" element={<AdventureDetails adventures={adventures} />} />
+          <Route path="/catalog/:adventureId" element={<AdventureDetails adventures={adventures} adventureDelete={adventureDelete} />} />
           <Route path="/adventures/:adventureId/edit" element={<Edit adventureEdit={adventureEdit} />} />
           <Route path="/create" element={<Create addAdventureHandler={addAdventureHandler} />} />
           <Route path="/profile" element={<Profile />} />

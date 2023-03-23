@@ -1,10 +1,25 @@
-import { Link, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import './AdventureDetails.css';
+import * as adventureService from '../../services/adventureService';
 const AdventureDetails =({
-  adventures
+  adventures,
+  adventureDelete,
 }) => {
   const {adventureId} = useParams();
   const adventure = adventures.find(x => x._id === adventureId);
+  const navigate = useNavigate()
+;
+  const adventureDeleteHandler = () => {
+    const confirmation = window.confirm('Are you sure you want to delete this adventure?')
+
+    if(confirmation) {
+      adventureService.remove(adventureId)
+      .then(() => {
+        adventureDelete(adventureId)
+        navigate('/catalog')
+      })
+    }
+  }
   return (
         
   <section id="details-page">
@@ -26,9 +41,9 @@ const AdventureDetails =({
             <Link to={`/adventures/${adventure._id}/edit`} className="edit-btn">
               Edit
             </Link>
-            <Link to="#" className="del-btn">
+            <button onClick={adventureDeleteHandler} className="del-btn">
               Delete
-            </Link>
+            </button>
             {/* logged in users, who have not yet voted*/}
             <Link to="#" className="vote-up">
               UpVote +1
