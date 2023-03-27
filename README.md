@@ -33,7 +33,7 @@ Profile page – The page show the user names, email and all created publication
 
 Edit page – The edit page is available for the owner to edit their own publication. The service will return the modified record. Upon success the user will be redirected to the details page.
 
-Delete Publication – The delete action is available for the owner. When the owner clicks on the Delete button, the publication will be deleted from the system.
+Delete page – The delete action is available for the owner. When the owner clicks on the Delete button, the publication will be deleted from the system.
 
 ## Available Scripts
 
