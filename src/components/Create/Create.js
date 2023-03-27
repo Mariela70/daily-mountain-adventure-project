@@ -1,5 +1,5 @@
 import * as adventureService from '../../services/adventureService';
-import './create-edit.css';
+import './create.css';
 const Create = ({addAdventureHandler}) => {
 
   const onSubmit = (e) => {
@@ -16,16 +16,16 @@ const Create = ({addAdventureHandler}) => {
 
   <section id="create-page">
     <div className="createSection">
-      <form id="createForm" onSubmit={onSubmit}>
+      <form id="create" onSubmit={onSubmit}>
         <h2>Create Adventure</h2>
-        <ul className="noBullet">
+        <ul className="createForm">
           <li>
             <label htmlFor="title">Title:</label>
             <input
               type="text"
               className="inputFields"
               id="title"
-              placeholder="Two golden snub-nosed monkeys"
+              placeholder="Rila"
               name="title"
               
             />
@@ -36,7 +36,7 @@ const Create = ({addAdventureHandler}) => {
               type="text"
               className="inputFields"
               id="location"
-              placeholder="North America"
+              placeholder="Bulgaria"
               name="location"
               
             />
@@ -47,13 +47,13 @@ const Create = ({addAdventureHandler}) => {
               type="text"
               className="inputFields"
               id="date"
-              placeholder="18.02.2021"
+              placeholder="21.03.2022"
               name="date"
               
             />
           </li>
           <li>
-            <label htmlFor="image">Mountain image:</label>
+            <label htmlFor="imageUrl">Mountain image:</label>
             <input
               type="text"
               className="inputFields"
