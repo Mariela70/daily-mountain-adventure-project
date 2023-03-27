@@ -57,7 +57,7 @@ const Create = ({addAdventureHandler}) => {
             <input
               type="text"
               className="inputFields"
-              id="image"
+              id="imageUrl"
               placeholder="http:/..."
               name="imageUrl"
               
