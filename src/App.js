@@ -16,6 +16,7 @@ import Profile from './components/Profile/Profile';
 
 import Edit from './components/Edit/Edit';
 import Logout from "./components/Logout/Logout";
+import NotFound from "./components/NotFound/NotFound";
 
 function App() {
   const [adventures, setAdventure] = useState([]);
@@ -60,7 +61,8 @@ function App() {
           <Route path="/catalog/:adventureId" element={<AdventureDetails adventures={adventures} adventureDelete={adventureDelete} />} />
           <Route path="/adventures/:adventureId/edit" element={<PrivateRoute><Edit adventureEdit={adventureEdit} /></PrivateRoute>} />
           <Route path="/create" element={<PrivateRoute><Create addAdventureHandler={addAdventureHandler} /></PrivateRoute>} />
-          <Route path="/profile" element={<PrivateRoute><Profile /></PrivateRoute>} />
+          <Route path="/profile" element={<PrivateRoute><Profile adventures={adventures} /></PrivateRoute>} />
+          <Route path="*" element={<NotFound />} />
 
         </Routes>
       </main>
