@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import './edit.css';
 
 import * as adventureService from '../../services/adventureService';
 const Edit = ({adventureEdit}) => {
@@ -12,7 +13,7 @@ const Edit = ({adventureEdit}) => {
       .then(adventureData => {
         setCurrentAdventure(adventureData);
       })
-  }, [])
+  }, [adventureId])
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -28,13 +29,13 @@ const Edit = ({adventureEdit}) => {
   return (
 
     <section id="edit-page">
-      <div className="editSection">
+      <div className="edit">
         <div className="info">
           <h2>Edit your own post!</h2>
         </div>
         <form id="editForm" onSubmit={onSubmit}>
           <h2>Edit Post</h2>
-          <ul className="noBullet">
+          <ul className="edit">
             <li>
               <label htmlFor="title">Title:</label>
               <input
@@ -66,11 +67,11 @@ const Edit = ({adventureEdit}) => {
               />
             </li>
             <li>
-              <label htmlFor="image">Wildlife image:</label>
+              <label htmlFor="imageUrl">Mountain image:</label>
               <input
                 type="text"
                 className="inputFields"
-                id="image"
+                id="imageUrl"
                 name="imageUrl"
                 defaultValue={currentAdventure.imageUrl}
               />
