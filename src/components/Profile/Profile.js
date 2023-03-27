@@ -1,44 +1,41 @@
+import { useContext, useEffect, useState } from "react";
+import { AuthContext } from "../../contexts/AuthContext";
+import * as adventureService from '../../services/adventureService';
+import ProfileItem from "./ProfileItem";
+import { useParams } from "react-router-dom";
 import './profile.css';
+
 const Profile = () => {
-    return (
-  <section id="my-posts">
-    <h1>My post.</h1>
-    <div className="my-container">
-      {/* If there are own posts for wildlife in the database display each of them */}
-      <div className="my-card">
-        <div className="card-header">
-          <img
-            src="./static/img/big-waterfall-dario-428.jpg"
-            alt="water_fall"
-          />
-        </div>
-        <div className="card-body">
-          <span className="tag tag-teal">Keyword: Waterfall</span>
-          <h4>Title: The magical waterfall</h4>
-          <div className="user">
-            <img
-              src="https://snworksceo.imgix.net/dtc/3f23c937-0065-4e17-8daa-46449777caed.sized-1000x1000.jpg?w=1000"
-              alt="vote"
-            />
-            <div className="user-info">
-              <h5>Author: Alex Petkov</h5>
-              <small>Rating of votes: -5</small>
-            </div>
-          </div>
-        </div>
+  const { user } = useContext(AuthContext);
+  const { adventureId } = useParams();
+  const [adventures, setAdventure] = useState([]);
+
+  useEffect(() => {
+    adventureService.getMyAdventure(adventureId)
+      .then(result => {
+        setAdventure(result);
+      });
+  }, [adventureId]);
+  return (
+    <section id="my-posts">
+      <h1>My post.</h1>
+      <div className="my-container">
+        <h1 className="user">Full Name: {user.firstname} {user.lastName}</h1>
+        <h1 className="user-email">Email: {user.email}</h1>
+
+        <article className="user-publications">
+          <ul className="created-publications">
+            <h3 className="created">Created publications: {adventures.length}</h3>
+            {adventures.length > 0
+              ? adventures.map(x => <ProfileItem key={x._id} adventure={x} />)
+              : <p className="no-publication">There are no created publications yet...</p>
+            }
+          </ul>
+        </article>
       </div>
-      {/* If there are still no own posts for wildlife in the database display: */}
-      {/*<div class="no-posts">
-                  <div class="no-posts-img">
-                      <!/-- Do not forget to change the path to the image, and remove this comment  --/>
-                      <img src="./static/img/bear.jpg" alt="image_nature_3">
-                  </div>
-                  <p class="no-offer">There are no own posts yet...</p>
-              </div>*/}
-    </div>
-  </section>
+    </section>
 
 
-    );
+  );
 };
 export default Profile;

@@ -10,3 +10,5 @@ export const create = (adventureData) => request.post(baseUrl, adventureData);
 export const edit = (adventureId, adventureData) => request.put(`${baseUrl}/${adventureId}`, adventureData);
 
 export const remove = (adventureId) => request.del(`${baseUrl}/${adventureId}`);
+
+export const getMyAdventure = (ownerId) => request.post(`${baseUrl}/profile/${ownerId}`);
