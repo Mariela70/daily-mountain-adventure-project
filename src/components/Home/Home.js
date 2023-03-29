@@ -3,8 +3,8 @@ import LatestAdventure from './LatestAdventure/LatestAdventure';
 const Home = ({ adventures }) => {
   return (
     <>
-      <section id="home">
-        <div className="home-container">
+      <section className="home">
+        <div className="container">
           <div className="short-info">
             <h1>The best of mountain adventure!</h1>
           </div>

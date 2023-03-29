@@ -1,13 +1,12 @@
-.home-container {
+.container {
     margin: 0px auto 4px 0;
-    height: 480px;
+    height: 180px;
     display: flex;
     top: 0%;
     left: 50%;
-    width: 100%;
+    width: 70%;
     text-align: center;
 }
-
 .short-info {
     justify-items: legacy;
     display: flex;
@@ -15,13 +14,13 @@
     position: relative;
     flex: 1;
     margin-top: 11.6em;
-    width: 100%;
+    width: 40%;
 }
 
 .short-info>h1 {
     text-transform: capitalize;
     font-size: 3.7rem;
-    font-weight: 600;
+    font-weight: 400;
     line-height: 1.1;
     color: #ffffff !important;
     font-family: Ubuntu, sans-serif !important;
@@ -32,20 +31,58 @@
     word-wrap: break-word;
     padding-left: 1em;
 }
-
-.short-info>h2 {
-    text-transform: capitalize;
-    font-size: 1.8rem;
-    font-weight: 600;
-    line-height: 1.1;
-    color: #fffefe !important;
-    font-family: Ubuntu, sans-serif !important;
-    pointer-events: auto;
-    word-wrap: break-word;
+  
+  .offers .post {
+    background-color: lightblue;
+    border-radius: 30px;
+    margin: 0 30px;
+    width: 25rem;
+    height: 22rem;
     position: relative;
-    font-weight: bold;
-    word-wrap: break-word;
-    padding-left: 1em;
-}
+    color: rgb(19, 66, 27);
+    box-shadow: 0 0 10px #00000070;
+  }
+  
+  .catalog h2 {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 26px;
+  }
+  
+  .offers img {
+    width: 60%;
+    height: 15rem;
+    border-radius: 30px;
+  }
+  
+  .container {
+    font-size: 16px;
+    text-align: center;
+  }
+  
+  .details-btn{
+    font-size: 18px;
+    background-color: black;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 30px;
+    position: absolute;
+    bottom: 10px;
+    right: 30%;
+  }
+  
+  .details:hover {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  }
+  
+  .no-offer {
+    font-size: 30px;
+    font-style: italic;
+    border: 1px solid rgba(0, 0, 0, 0.556);
+    padding: 20px;
+    margin-top: 10%;
+    box-shadow: 0 0 10px #00000070;
+  }
+
 
 
