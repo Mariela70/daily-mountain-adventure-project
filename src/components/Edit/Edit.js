@@ -85,8 +85,8 @@ const Edit = ({adventureEdit}) => {
                 defaultValue={currentAdventure.description}
               />
             </li>
-            <li id="center-btn">
-              <input type="submit" id="edit-btn" value="Edit" />
+            <li id="btn">
+              <input type="submit" className="edit-btn" value="Edit" />
             </li>
           </ul>
         </form>

@@ -10,7 +10,7 @@ main {
     padding: 30px;
     margin-bottom: 120px;
     margin-left: -90px;
-    background-color: rgb(240, 203, 156);
+    background-color: lightblue;
 }
 
 .edit textarea {
@@ -51,7 +51,7 @@ a:hover {
     color: rgb(241, 237, 237);
 }
 
-.edit .btn {
+.edit-btn {
     border-radius: 25px;
     padding: 8px 15px;
     vertical-align: middle;
@@ -62,17 +62,8 @@ a:hover {
     margin-top: 10px;
 }
 
-.btn:hover {
-    background-color: black;
-    color: gold;
-}
-
 ul.categories {
     margin-left: 25px;
     margin-right: 200px;
     font-size: 20px;
-}
-
-.categories li:nth-of-type(4) {
-    list-style-type: none;
 }
