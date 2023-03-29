@@ -3,6 +3,7 @@ import * as authService from '../../services/authService';
 import { Link } from "react-router-dom";
 import { AuthContext } from '../../contexts/AuthContext';
 import { useNavigate } from 'react-router-dom';
+import './register.css';
 
 const Register = () => {
   const { userLoginHandler } = useContext(AuthContext);
@@ -29,7 +30,7 @@ const Register = () => {
   }
   return (
     <section id="register-page">
-      <div className="signupSection">
+      <div className="register">
         <form className="signupForm" onSubmit={onSubmit}>
           <h2>Sign Up</h2>
           <ul className="noBullet">
@@ -86,8 +87,8 @@ const Register = () => {
                 placeholder="******"
               />
             </li>
-            <li id="center-btn">
-              <input type="submit" className="join-btn" value="Register" />
+            <li id="register-btn">
+              <input type="submit" className="register-btn" value="Register" />
               <p className="fiels">
                 <span>
                   If you already have profile click <Link to="/login">here</Link>
