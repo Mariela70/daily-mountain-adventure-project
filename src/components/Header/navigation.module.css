@@ -15,7 +15,7 @@ body {
 }
 
 main {
-    padding-bottom: 5em;
+    display: flex;
 }
 
 body {
@@ -39,10 +39,9 @@ footer {
     background-color: lightblue;
     width: 100%;
     font-size: 1.2rem;
-    
     align-items: center;
     margin: 0%;
-    height: 100px;
+    height: 80px;
     display: flex;
     justify-content: space-around;
     padding: 50px 70px;

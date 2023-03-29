@@ -8,17 +8,15 @@ const Header = () => {
     return (
         <nav>
             <h1>
-            <Link to="/">Adventure</Link>
+                <Link to="/">Adventure</Link>
             </h1>
-
-            <ul className="menu">
-                
+            <div>
                 <li>
                     <Link to="/catalog">All Posts</Link>
                 </li>
-                {/* Logged users */}
+
                 {user.email
-                    ? <ul className="logged">
+                    ? <div className="logged">
                         <li>
                             <Link to="/create">Create Post</Link>
                         </li>
@@ -32,18 +30,18 @@ const Header = () => {
                         <li>
                             <Link to="/logout">Logout</Link>
                         </li>
-                    </ul>
-                    : <ul className="guest">
+                    </div>
+                    : <div className="guest">
                         <li>
                             <Link to="/register">Register</Link>
                         </li>
                         <li>
                             <Link to="/login">Login</Link>
                         </li>
-                    </ul>
+                    </div>
                 }
+            </div>
 
-            </ul>
         </nav>
 
     );
