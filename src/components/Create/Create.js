@@ -15,10 +15,10 @@ const Create = ({addAdventureHandler}) => {
     return (
 
   <section id="create-page">
-    <div className="createSection">
+    <div className="create">
       <form id="create" onSubmit={onSubmit}>
         <h2>Create Adventure</h2>
-        <ul className="createForm">
+        <ul className="form">
           <li>
             <label htmlFor="title">Title:</label>
             <input
@@ -73,8 +73,8 @@ const Create = ({addAdventureHandler}) => {
               defaultValue={""}
             />
           </li>
-          <li id="center-btn">
-          <input type="submit" id="create-btn" value="Create" />
+          <li id="create-btn">
+          <input type="submit" className="create-btn" value="Create" />
           </li>
         </ul>
       </form>
