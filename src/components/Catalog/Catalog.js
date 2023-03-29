@@ -6,9 +6,9 @@ const Catalog = ({adventures}) => {
   
   return (
   
-      <section id="catalog">
+      <section className="catalog">
         <h1>All posts</h1>
-        <div className="band">
+        <div className="adventure">
 
           {adventures.length > 0
             ? adventures.map(x => <CatalogItem key={x._id} adventure={x} />)
