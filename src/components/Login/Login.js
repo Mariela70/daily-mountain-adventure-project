@@ -2,7 +2,7 @@ import * as authService from '../../services/authService';
 import { AuthContext } from '../../contexts/AuthContext';
 import { useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import './login-register.css';
+import './login.css';
 const Login = () => {
   const {userLoginHandler} = useContext(AuthContext);
   const navigate = useNavigate();
@@ -52,8 +52,8 @@ const Login = () => {
                 placeholder="*******"
               />
             </li>
-            <li id="center-btn">
-              <input type="submit" className = "login-btn" value="Login" />
+            <li id="login-btn">
+              <input type="submit" className="login-btn" value="Login" />
               <p className="fiels">
                 <span>
                   If you don't have profile click <Link to="/register">here</Link>
