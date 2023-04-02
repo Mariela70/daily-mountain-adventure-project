@@ -19,7 +19,7 @@
     padding: 0;
     letter-spacing: 0px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    color: rgb(234, 236, 250);
+    color: black;
     margin-top: 50px;
     text-align: center;
     font-size: 4.5rem;
@@ -27,22 +27,10 @@
     margin-bottom: 0.4em;
 }
 
-.my-container {
-    display: flex;
-    width: 98%;
-    margin-left: 1em;
-    background-color: #4daab8;
-    flex-wrap: wrap;
-    padding-left: 1em;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    text-align: left;
-}
-
-.user {
+.user-email {
     margin: 10px;
     margin-left: 2em;
-    background-color: #fff;
+    background-color: lightblue;
     border-radius: 10px;
     box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
     overflow: hidden;
@@ -55,11 +43,60 @@
     object-fit: cover;
 }
 
-.user {
-    display: flex;
-    margin-top: auto;
+.created-publications .post {
+  background-color: lightblue;
+  border-radius: 30px;
+  margin: 0 30px;
+  width: 25rem;
+  height: 22rem;
+  position: relative;
+  color: rgb(19, 66, 27);
+  box-shadow: 0 0 10px #00000070;
 }
+.created-publications {
+    margin-left: 220px;
+    padding-right: 180px;  
 
-.no-publication {
-    margin: 0;
-}
+} 
+  .adventure img {
+    width: 60%;
+    height: 15rem;
+    border-radius: 30px;
+  }
+  
+  .container {
+    font-size: 16px;
+    text-align: center;
+  }
+  
+  .details-btn{
+    font-size: 18px;
+    background-color: black;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 30px;
+    position: sticky;
+    bottom: 10px;
+    right: 30%;
+  }
+  
+  .details:hover {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  }
+  
+  .no-offer {
+    font-size: 30px;
+    font-style: italic;
+    border: 1px solid rgba(0, 0, 0, 0.556);
+    padding: 20px;
+    margin-top: 10%;
+    box-shadow: 0 0 10px #00000070;
+  }
+
+
+  
+
+  
+
+
+
