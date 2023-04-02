@@ -10,7 +10,7 @@ export const AddComment = ({
             <label>Add new comment:</label>
             <form className="form" onSubmit={onSubmit}>
                 <textarea name="comment" placeholder="Comment..." value={values.comment} onChange={changeHandler} ></textarea>
-                <input className="btn submit" type="submit" value="Add new comment" />
+                <input className="btn-submit" type="submit" value="Add new comment" />
             </form>
         </article>
     )

@@ -11,9 +11,9 @@ const AdventureDetails = ({
   adventureDelete,
 }) => {
   const [adventure, setAdventure] = useState({});
-  const { user, isAuthenticated, email} = useContext(AuthContext);
+  const { user, isAuthenticated, email } = useContext(AuthContext);
   const { adventureId } = useParams();
- 
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -40,78 +40,78 @@ const AdventureDetails = ({
         })
     }
   }
-  const adventureVoteHandler = () => {
 
-  }
   const onCommentSubmit = async (values) => {
-   const response = await commentService.create(adventureId, values.comment);
-  
-   setAdventure(state => ({
-    ...state,
-    comment: [
-      ...state.comments,
-      {
-        ...response,
-        author: {
-          email
+    const response = await commentService.create(adventureId, values.comment);
+
+    setAdventure(state => ({
+      ...state,
+      comment: [
+        ...state.comments,
+        {
+          ...response,
+          author: {
+            email
+          }
         }
-      } 
-    ],
-   }));
+      ],
+    }));
   };
 
   const isOwner = adventure._ownerId === user._id;
   return (
+    <section className="details-page">
+      <h1>Details</h1>
+      <article className="details-card">
 
-    <section id="details-page">
-      <div className="main_card">
-        <div className="card_left">
-          <div className="card_datails">
-            <h1>Title: {adventure.title}</h1>
-            <h3>Created by an author: {user.email}</h3>
-            <div className="card_animal">
-              <p className="card-location">Location: {adventure.location}</p>
-              <p className="card-date">Date: {adventure.date}</p>
-            </div>
-            <p className="disc">
-              Description: {adventure.description}
-            </p>
+        <article className="details-card-text">
+          <h2>Title: {adventure.title}</h2>
+          <h3>Author: { }</h3>
+          <h3>Date: {adventure.date}</h3>
+          <h3>Location: {adventure.location}</h3>
+          <h3>Description: {adventure.description}</h3>
 
-            <div className="comments">
-              <h2>Comments:</h2>
-              <ul>
-                {adventure.comments && adventure.comments.map(x => (
-                  <li key={x._id} className="comment">
-                    <p>{x.author.email}: {x.comment}</p>
-                  </li>
-                ))}
-              </ul>
-              {!adventure.comments?.length && (
-                <p className="no-comments-yet">No comments</p>
-              )}
-            </div>
-
-            {isOwner && 
-              <div className="social-btn">
-
-                <Link to={`/adventures/${adventure._id}/edit`} className="edit-btn">
-                  Edit
-                </Link>
-                <button onClick={adventureDeleteHandler} className="del-btn">
-                  Delete
-                </button>
-              </div>
-            }
-            {isAuthenticated && <AddComment onCommentSubmit={onCommentSubmit} />}
-
-            <button onClick={adventureVoteHandler} className="vote">
-                  Vote
-                </button>
-              
-            
+          <div className="comments">
+            <h2>Comments:</h2>
+            <ul>
+              {adventure.comments && adventure.comments.map(x => (
+                <li key={x._id} className="comment">
+                  <p>{x.author.email}: {x.comment}</p>
+                </li>
+              ))}
+            </ul>
+            {!adventure.comments?.length && (
+              <p className="no-comments-yet">No comments</p>
+            )}
           </div>
-        </div>
-      </div>
+
+
+          {isOwner &&
+
+            <div className="buttons">
+              <Link to={`/adventures/${adventure._id}/edit`} class="btn-edit">Edit</Link>
+              <button onClick={adventureDeleteHandler} className="btn-delete">
+                Delete
+              </button>
+            </div>
+          }
+          {isAuthenticated &&
+            <div>
+
+              <AddComment onCommentSubmit={onCommentSubmit} />
+
+            </div>
+          }
+
+
+        </article>
+
+        <article className="details-card-image">
+          <img src={adventure.imageUrl} />
+          <img alt="" />
+        </article>
+
+      </article>
     </section>
 
   );
