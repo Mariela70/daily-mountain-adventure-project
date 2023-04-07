@@ -1,10 +1,12 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import { AdventureContext } from "../../contexts/AdventureContext";
 import './edit.css';
 
 import * as adventureService from '../../services/adventureService';
-const Edit = ({adventureEdit}) => {
+const Edit = () => {
   const [currentAdventure, setCurrentAdventure] = useState({});
+  const {adventureEdit} = useContext(AdventureContext);
   const { adventureId } = useParams();
   const navigate = useNavigate();
 

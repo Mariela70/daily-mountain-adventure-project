@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import './register.css';
 
 const Register = () => {
-  const { userLoginHandler } = useContext(AuthContext);
+  const { userRegisterHandler } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const onSubmit = (e) => {
@@ -24,7 +24,7 @@ const Register = () => {
     }
     authService.register(firstName, lastName, email, password)
       .then(authData => {
-        userLoginHandler(authData)
+        userRegisterHandler(authData)
         navigate('/');
       });
   }

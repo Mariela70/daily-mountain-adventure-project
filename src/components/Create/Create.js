@@ -1,6 +1,9 @@
 import * as adventureService from '../../services/adventureService';
+import { useContext } from 'react';
+import { AdventureContext } from '../../contexts/AdventureContext';
 import './create.css';
-const Create = ({addAdventureHandler}) => {
+const Create = () => {
+  const {adventureAdd} = useContext(AdventureContext);
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -9,7 +12,7 @@ const Create = ({addAdventureHandler}) => {
 
     adventureService.create(adventureData)
     .then(result => {
-      addAdventureHandler(result)
+      adventureAdd(result)
     });
   };
     return (

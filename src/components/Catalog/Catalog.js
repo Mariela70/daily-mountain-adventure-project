@@ -1,8 +1,10 @@
-
+import { useContext } from 'react';
+import { AdventureContext } from '../../contexts/AdventureContext';
 import './catalog.css';
 import CatalogItem from './CatalogItem/CatalogItem';
 
-const Catalog = ({adventures}) => {
+const Catalog = () => {
+  const {adventures} = useContext(AdventureContext);
   
   return (
   

@@ -1,6 +1,10 @@
+import { useContext } from "react";
+
+import { AdventureContext } from "../../contexts/AdventureContext";
 import './home.css';
 import LatestAdventure from './LatestAdventure/LatestAdventure';
-const Home = ({ adventures }) => {
+const Home = () => {
+  const {adventures} =useContext(AdventureContext);
   return (
     <>
       <section className="home">
