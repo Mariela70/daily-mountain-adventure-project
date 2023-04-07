@@ -11,11 +11,15 @@ export const AuthProvider = ({
     const userLoginHandler = (authData) => {
         setAuth(authData);
       };
+
+      const userRegisterHandler = (authData) => {
+        setAuth(authData)
+      }
       const userLogoutHandler = () => {
         setAuth({});
       };
     return (
-        <AuthContext.Provider value={{user: auth, userLoginHandler, userLogoutHandler, isAuthenticated: !!auth.accessToken}}>
+        <AuthContext.Provider value={{user: auth, userRegisterHandler, userLoginHandler, userLogoutHandler, isAuthenticated: !!auth.accessToken}}>
             {children}
         </AuthContext.Provider>
     );
