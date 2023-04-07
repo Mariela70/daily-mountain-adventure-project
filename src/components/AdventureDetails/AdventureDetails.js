@@ -1,32 +1,40 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
+import { AdventureContext } from '../../contexts/AdventureContext';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import './AdventureDetails.css';
 import * as adventureService from '../../services/adventureService';
-import { AddComment } from "./AddComment/AddComment";
 import * as commentService from '../../services/commentService';
 
-const AdventureDetails = ({
-  adventures,
-  adventureDelete,
-}) => {
-  const [adventure, setAdventure] = useState({});
-  const { user, isAuthenticated, email } = useContext(AuthContext);
+const AdventureDetails = () => {
+  const { user, isAuthenticated } = useContext(AuthContext);
   const { adventureId } = useParams();
+  const { addComment, fetchAdventureDetails, selectAdventure, adventureRemove } = useContext(AdventureContext);
 
   const navigate = useNavigate();
+  const currentAdventure = selectAdventure(adventureId);
 
   useEffect(() => {
-    Promise.all([
-      adventureService.getOne(adventureId),
-      commentService.getAll(adventureId),
-    ]).then(([adventureData, comments]) => {
-      setAdventure({
-        ...adventureData,
-        comments,
+    (async () => {
+      const adventureDetails = await adventureService.getOne(adventureId);
+      console.log(adventureDetails);
+      const adventureComments = await commentService.getAll(adventureId);
+
+      fetchAdventureDetails(adventureId, { ...adventureDetails, comments: adventureComments.map(x => `${x.user.email}: ${x.text}`) });
+    })();
+  }, [])
+
+  const addCommentHandler = (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+
+    const comment = formData.get('comment');
+
+    commentService.create(adventureId, comment)
+      .then(result => {
+        addComment(adventureId, comment);
       });
-    });
-  }, [adventureId]);
+  };
 
 
   const adventureDeleteHandler = () => {
@@ -35,52 +43,35 @@ const AdventureDetails = ({
     if (confirmation) {
       adventureService.remove(adventureId)
         .then(() => {
-          adventureDelete(adventureId)
+          adventureRemove(adventureId)
           navigate('/catalog')
         })
     }
   }
 
-  const onCommentSubmit = async (values) => {
-    const response = await commentService.create(adventureId, values.comment);
 
-    setAdventure(state => ({
-      ...state,
-      comment: [
-        ...state.comments,
-        {
-          ...response,
-          author: {
-            email
-          }
-        }
-      ],
-    }));
-  };
-
-  const isOwner = adventure._ownerId === user._id;
+  const isOwner = currentAdventure._ownerId === user._id;
   return (
     <section className="details-page">
       <h1>Details</h1>
       <article className="details-card">
 
         <article className="details-card-text">
-          <h2>Title: {adventure.title}</h2>
-          <h3>Author: { }</h3>
-          <h3>Date: {adventure.date}</h3>
-          <h3>Location: {adventure.location}</h3>
-          <h3>Description: {adventure.description}</h3>
+          <h2>Title: {currentAdventure.title}</h2>
+          <h3>Date: {currentAdventure.date}</h3>
+          <h3>Location: {currentAdventure.location}</h3>
+          <h3>Description: {currentAdventure.description}</h3>
 
           <div className="comments">
             <h2>Comments:</h2>
             <ul>
-              {adventure.comments && adventure.comments.map(x => (
-                <li key={x._id} className="comment">
-                  <p>{x.author.email}: {x.comment}</p>
+              {currentAdventure.comments && currentAdventure.comments.map(x => (
+                <li key={x} className="comment">
+                  <p>{x}</p>
                 </li>
               ))}
             </ul>
-            {!adventure.comments?.length && (
+            {!currentAdventure.comments?.length && (
               <p className="no-comments-yet">No comments</p>
             )}
           </div>
@@ -89,7 +80,7 @@ const AdventureDetails = ({
           {isOwner &&
 
             <div className="buttons">
-              <Link to={`/adventures/${adventure._id}/edit`} class="btn-edit">Edit</Link>
+              <Link to={`/adventures/${adventureId}/edit`} className="btn-edit">Edit</Link>
               <button onClick={adventureDeleteHandler} className="btn-delete">
                 Delete
               </button>
@@ -97,8 +88,21 @@ const AdventureDetails = ({
           }
           {isAuthenticated &&
             <div>
+              <article className="create-comment">
+                <label>Add new comment:</label>
+                <form className="form" onSubmit={addCommentHandler}>
+                  <textarea
+                    name="comment"
+                    placeholder="Comment......"
+                  />
 
-              <AddComment onCommentSubmit={onCommentSubmit} />
+                  <input
+                    className="btn submit"
+                    type="submit"
+                    value="Add Comment"
+                  />
+                </form>
+              </article>
 
             </div>
           }
@@ -107,8 +111,7 @@ const AdventureDetails = ({
         </article>
 
         <article className="details-card-image">
-          <img src={adventure.imageUrl} />
-          <img alt="" />
+          <img src={currentAdventure.imageUrl} alt={currentAdventure.title} />
         </article>
 
       </article>

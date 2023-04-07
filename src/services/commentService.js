@@ -2,18 +2,12 @@ import * as request from "./requester";
 
 const baseUrl = 'http://localhost:3030/data/comments';
 
-export const getAll = async(adventureId) => {
-    const query = encodeURIComponent(`adventureId="${adventureId}"`);
-    const relationQuery = encodeURIComponent(`author=_ownerId:users`);
+export const create = (adventureId, comment) =>
+    request.post(baseUrl, { adventureId, text: comment });
 
-    const result = await request.get(`${baseUrl}?where=${query}&load=${relationQuery}`);
-    const comments = Object.values(result);
+export const getAll = (adventureId) => {
+    const relations = encodeURIComponent(`user=_ownerId:users`);
+    const search = encodeURIComponent(`adventureId="${adventureId}"`);
 
-    return comments;
-};
-
-export const create = async (adventureId, comment) => {
-const result = await request.post(baseUrl, {adventureId, comment});
-
-return result;
-};
+    return request.get(`${baseUrl}?where=${search}&load=${relations}`);
+}
