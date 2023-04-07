@@ -16,12 +16,36 @@ main {
 .create textarea {
     width: 350px;
 }
+.create h1 {
+    text-align: center;
+    padding-bottom: 5px;
+    border-bottom: 4px solid black;
+}
+
+.create label {
+    display: block;
+    margin-top: 10px;
+}
 .create input {
     display: block;
     margin-bottom: 15px;
     width: 350px;
     border: none;
     border-bottom: 3px solid black;
+}
+.create input:focus {
+    outline: none;
+    border-bottom: 3px solid black;
+    vertical-align: middle;
+}
+
+a {
+    text-decoration: none;
+    color: blue;
+}
+
+a:hover {
+    color: rgb(241, 237, 237);
 }
 
 .create-btn {
@@ -33,6 +57,11 @@ main {
     font-weight: 600;
     cursor: pointer;
     margin-top: 10px;
+}
+ul.categories {
+    margin-left: 25px;
+    margin-right: 200px;
+    font-size: 20px;
 }
 
 

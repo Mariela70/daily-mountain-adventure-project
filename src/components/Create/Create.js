@@ -20,8 +20,10 @@ const Create = () => {
   <section id="create-page">
     <div className="create">
       <form id="create" onSubmit={onSubmit}>
+      <div className="info">
         <h2>Create Adventure</h2>
-        <ul className="form">
+        </div>
+        <ul className="create">
           <li>
             <label htmlFor="title">Title:</label>
             <input
