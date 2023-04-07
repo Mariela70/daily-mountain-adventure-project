@@ -11,9 +11,6 @@ const LatestAdventure = ({
           <h2>{adventure.title}</h2>
         </div>
       </div>
-      <p>
-        {adventure.description}
-      </p>
       <Link to={`/catalog/${adventure._id}`} className="details-btn">
         Details
       </Link>
