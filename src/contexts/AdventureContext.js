@@ -34,7 +34,7 @@ export const AdventureProvider = ({
             .then(result => {
                 const action = {
                     type: 'ADD_ADVENTURES',
-                    payload: result
+                    payload: result,
                 };
 
                 dispatch(action);
@@ -51,7 +51,7 @@ export const AdventureProvider = ({
             payload: adventureDetails,
             adventureId,
         })
-    }
+    };
 
     const addComment = (adventureId, comment) => {
         dispatch({
@@ -83,7 +83,7 @@ export const AdventureProvider = ({
             type: 'REMOVE_ADVENTURE',
             adventureId
         })
-    }
+    };
     return (
         <AdventureContext.Provider value={{
             adventures,
@@ -97,4 +97,4 @@ export const AdventureProvider = ({
             {children}
         </AdventureContext.Provider>
     );
-}
+};
