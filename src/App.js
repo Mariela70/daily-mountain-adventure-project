@@ -16,6 +16,7 @@ import Profile from './components/Profile/Profile';
 import Edit from './components/Edit/Edit';
 import Logout from "./components/Logout/Logout";
 import NotFound from "./components/NotFound/NotFound";
+import { Footer } from "./components/Footer/Footer";
 
 function App() {
   
@@ -39,6 +40,7 @@ function App() {
           </Routes>
         </AdventureProvider>
       </main>
+      <Footer />
     </AuthProvider>
   );
 }
