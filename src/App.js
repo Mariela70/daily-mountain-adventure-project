@@ -6,13 +6,9 @@ import Login from './components/Login/Login';
 import Register from './components/Register/Register';
 import Catalog from './components/Catalog/Catalog';
 import PrivateRoute from "./components/common/PrivateRoute";
-
 import { Routes, Route } from 'react-router-dom';
-
 import AdventureDetails from './components/AdventureDetails/AdventureDetails';
 import Create from './components/Create/Create';
-import Profile from './components/Profile/Profile';
-
 import Edit from './components/Edit/Edit';
 import Logout from "./components/Logout/Logout";
 import NotFound from "./components/NotFound/NotFound";
@@ -34,7 +30,6 @@ function App() {
             <Route path="/catalog/:adventureId" element={<AdventureDetails />} />
             <Route path="/adventures/:adventureId/edit" element={<PrivateRoute><Edit /></PrivateRoute>} />
             <Route path="/create" element={<PrivateRoute><Create  /></PrivateRoute>} />
-            <Route path="/profile" element={<PrivateRoute><Profile /></PrivateRoute>} />
             <Route path="*" element={<NotFound />} />
 
           </Routes>

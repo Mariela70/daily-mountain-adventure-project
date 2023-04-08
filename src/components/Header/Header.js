@@ -11,22 +11,20 @@ const Header = () => {
                 <Link to="/">Adventure</Link>
             </h1>
             <div>
+                {user.email && <span>Welcome <span>{user.email}</span></span>}
+                
+                
                 <li>
                     <Link to="/catalog">All Posts</Link>
                 </li>
 
                 {user.email
                     ? <div className="logged">
+
                         <li>
                             <Link to="/create">Create Post</Link>
                         </li>
-                        <li>
-                            <Link to="/profile">
-                                Posts of {"{"}
-                                {"{"}{user.email}{"}"}
-                                {"}"}
-                            </Link>
-                        </li>
+
                         <li>
                             <Link to="/logout">Logout</Link>
                         </li>
