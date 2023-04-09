@@ -29,7 +29,6 @@ Create adventure page – The create page is available for logged in users. It c
 
 Details page – The logged in users are able to view details about every adventure. Clicking the Details button in the view will display the page. If the currently logged in user is the creator of the publication, he can clickt the Edit and Delete buttons.
 
-Profile page – The page show the user names, email and all created publications made by the current user.
 
 Edit page – The edit page is available for the owner to edit their own publication. The service will return the modified record. Upon success the user will be redirected to the details page.
 
